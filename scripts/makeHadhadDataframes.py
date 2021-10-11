@@ -4,35 +4,29 @@ import numpy as np
 import pandas as pd
 
 from utils import masspoints, addHeavyFlavourSplit
-from lephad_utils import getLephadDf, edgesSLT, edgesLTT
+from hadhad_utils import getHadhadDf, edgesHadhad
 
 
 parser = argparse.ArgumentParser()
 parser.add_argument("ntuple")
-parser.add_argument("ntuple_fake")
 parser.add_argument("-o", "--outfile", required=True)
-parser.add_argument("-c", "--channel", choices=["SLT", "LTT"], required=True)
 args = parser.parse_args()
 
 
 treenames = [
     "data",
-    "ttbar",
-    "stops", "stopt", "stopWt",
-    "W", "Wtt",
-    "Z", "Ztt",
-    "DY", "DYtt",
-    "ZZ", "WZ", "WW",
-    "ggZHtautau", "qqZHtautau", "WHtautau", "VBFHtautau", "ggFHtautau",
-    "ttH",
-    "ggZHbb", "qqZHbb", "WHbb"
+    "Htautau", "VH",
+    "ttH", "ttV",
+    "Wenu", "Wmunu", "Wtaunu",
+    "Zee", "Zmumu", "Ztautau",
+    "Diboson",
+    "Fake",
+    "singletop", "ttbar", "ttbarFakesMC",
 ]
 
 dfs = []
 for tree in treenames:
-    dfs.append(getLephadDf(args.ntuple, tree))
-
-dfs.append(getLephadDf(args.ntuple_fake, "Fake"))
+    dfs.append(getHadhadDf(args.ntuple, tree))
 
 df = pd.concat(dfs)
 del dfs
@@ -51,14 +45,8 @@ print(
 
 # Adding bin indices
 for mass in masspoints:
-    # Get bin edges for channel
-    edges = None
-    if args.channel == "SLT":
-        edges = edgesSLT[mass]
-    elif args.channel == "LTT":
-        edges = edgesLTT[mass]
-    else:
-        raise RuntimeError(f"Unknown channel: {args.channel}")
+    # Get bin edges
+    edges = edgesHadhad[mass]
 
     # Discretize MVA scores according to binning
     idx = np.digitize(df[f"PNN{mass}"], bins=edges)
@@ -72,13 +60,4 @@ for mass in masspoints:
 
     df[f"PNN{mass}Bin"] = idx.astype(np.uint8)
 
-
-df_name = None
-if args.channel == "SLT":
-    df_name = "df_slt"
-elif args.channel == "LTT":
-    df_name = "df_ltt"
-else:
-    raise RuntimeError(f"Unknown channel: {args.channel}")
-
-df.to_hdf(args.outfile, df_name, complevel=9, format="table")
+df.to_hdf(args.outfile, "df_hadhad", complevel=9, format="table")

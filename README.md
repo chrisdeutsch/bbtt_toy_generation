@@ -13,6 +13,11 @@
 3. Get ntuples for hadhad, lephad SLT + LTT
 
 
+Before starting your directory tree should look something like this:
+```
+TODO
+```
+
 ## Step 1: Discriminant Binning
 
 Parse the WSMaker workspace building log files to get the bin edges
@@ -80,7 +85,9 @@ makeLephadDataframes.py \
 
 ### Step 3.2: Hadhad
 
-TODO
+```bash
+makeHadhadDataframes.py ntuples/hadhad/mva_ntup.root -o dataframes/dataframe_hadhad.h5
+```
 
 
 ## Step 4: Expected Correlation Between Bins in Data
