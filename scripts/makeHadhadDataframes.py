@@ -35,6 +35,9 @@ del dfs
 addHeavyFlavourSplit(df)
 df["sample"] = df["sample"].astype("category")
 
+# Remove Zttl (also removed in workspaces)
+df = df.loc[df["sample"] != "Zttl"]
+
 # Yield tables
 print("Yield table")
 print(
