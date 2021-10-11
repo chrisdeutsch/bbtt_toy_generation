@@ -11,6 +11,7 @@ from utils import masspoints
 parser = argparse.ArgumentParser()
 parser.add_argument("dataframe")
 parser.add_argument("-o", "--outfile", required=True)
+parser.add_argument("--veto-negative-rates", action="store_true")
 args = parser.parse_args()
 
 
@@ -77,13 +78,20 @@ cnt_neg1 = np.count_nonzero(l1_mat < 0)
 cnt_neg2 = np.count_nonzero(l2_mat < 0)
 cnt_neg3 = np.count_nonzero(l3_mat < 0)
 
-# Set negative rates to 0
-print(f"Setting {cnt_neg1} negative lambda1's to 0...")
-l1_mat[l1_mat < 0] = 0.0
-print(f"Setting {cnt_neg2} negative lambda2's to 0...")
-l2_mat[l2_mat < 0] = 0.0
-print(f"Setting {cnt_neg3} negative lambda3's to 0...")
-l3_mat[l3_mat < 0] = 0.0
+if args.veto_negative_rates:
+    # Set negative rates to 0
+    print(f"Setting {cnt_neg1} negative lambda1's to 0...")
+    l1_mat[l1_mat < 0] = 0.0
+    print(f"Setting {cnt_neg2} negative lambda2's to 0...")
+    l2_mat[l2_mat < 0] = 0.0
+    print(f"Setting {cnt_neg3} negative lambda3's to 0...")
+    l3_mat[l3_mat < 0] = 0.0
+else:
+    print("Not vetoing negative rates")
+    print(f"Negative lambda 1's: {cnt_neg1}")
+    print(f"Negative lambda 2's: {cnt_neg2}")
+    print(f"Negative lambda 3's: {cnt_neg3}")
+
 
 corr_mat = l3_mat / np.sqrt((l1_mat + l3_mat) * (l2_mat + l3_mat))
 
