@@ -61,14 +61,27 @@ for mass, ibin in bin_labels:
 
 mu = np.array(mu)
 
+# Shape of corr-matrix
+print(f"Shape of correlation matrix: {corr.shape}")
+
+# Rank of corr-matrix
+rank = np.linalg.matrix_rank(corr)
+print(f"\nRank of correlation matrix: {rank}")
+
+# Dimension minus rank (i.e. the number of redundant dimensions)
+print(f"\nDim-Rank: {corr.shape[0] - rank}")
+
+# Maximum correlation on off-diagonal
+corr_rmdiag = corr.copy()
+np.fill_diagonal(corr_rmdiag, 0.0)
+print(f"\nMaximum correlation of off-diagonal elements: {corr_rmdiag.max()}")
 
 # Diagonalize correlation matrix
 eigval, eigvec = np.linalg.eigh(corr)
 with np.printoptions(precision=3, suppress=True):
-    print(f"Eigenvalues: {eigval}")
+    print(f"\nEigenvalues: {eigval}")
 
 eigval[eigval < 1e-12] = 0.0
-
 
 # Multivariate normal RVS
 rvs = []
