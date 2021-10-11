@@ -31,7 +31,6 @@ def getHadhadDf(filename, treename):
         "Zee": "Z",
         "Zmumu": "Z",
         "Ztautau": "Ztt",
-        "ttbarFakesMC": "ttbarFakes"
     }
 
     if treename in name_mapping:

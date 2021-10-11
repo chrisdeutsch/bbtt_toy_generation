@@ -33,7 +33,8 @@ mask_zhf = \
 df.loc[mask_zhf, "weight"] *= zhf_scale
 
 # ttbar
-df.loc[df["sample"] == "ttbar", "weight"] *= ttbar_scale
+mask_ttbar = (df["sample"] == "ttbar") | (df["sample"] == "ttbarFakesMC")
+df.loc[mask_ttbar, "weight"] *= ttbar_scale
 
 print("Yield after scale factors:")
 print(df.groupby("sample")["weight"].agg(Entries="count", Integral="sum"))

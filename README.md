@@ -100,9 +100,23 @@ mkdir correlation_matrices
 
 makeCorr.py dataframes/dataframe_slt.h5 -o correlation_matrices/corr_slt.h5
 makeCorr.py dataframes/dataframe_ltt.h5 -o correlation_matrices/corr_ltt.h5
+makeCorr.py dataframes/dataframe_hadhad.h5 -o correlation_matrices/corr_hadhad.h5
 ```
 
 TODO: make plots
 
 
-## Step 5: 
+## Step 5: Generate Poisson RVS
+
+```bash
+mkdir poisson_rvs
+
+generateFromCorr.py correlation_matrices/corr_slt.h5 asimov/asimov_merged.root \
+    -c SLT -o poisson_rvs/rvs_slt.h5
+
+generateFromCorr.py correlation_matrices/corr_ltt.h5 asimov/asimov_merged.root \
+    -c LTT -o poisson_rvs/rvs_ltt.h5
+
+generateFromCorr.py correlation_matrices/corr_hadhad.h5 asimov/asimov_merged.root \
+    -c Hadhad -o poisson_rvs/rvs_hadhad.h5
+```
