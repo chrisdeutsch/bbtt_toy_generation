@@ -120,3 +120,18 @@ generateFromCorr.py correlation_matrices/corr_ltt.h5 asimov/asimov_merged.root \
 generateFromCorr.py correlation_matrices/corr_hadhad.h5 asimov/asimov_merged.root \
     -c Hadhad -o poisson_rvs/rvs_hadhad.h5
 ```
+
+
+## Step 6: Generate Global Observables (Barlow-Beeston)
+
+
+## Step 7: Generate Global Observables (Others)
+
+
+## Step 8: Build Workspace Inputs
+
+
+## Step 9: Fit Toys & Evaluation
+
+This is handled in a separate
+[repository](https://gitlab.cern.ch/cdeutsch/bbtt_global_significance/).
