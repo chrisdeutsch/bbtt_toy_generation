@@ -82,3 +82,20 @@ makeLephadDataframes.py \
 
 TODO
 
+
+## Step 4: Expected Correlation Between Bins in Data
+
+Estimates the expected correlation matrix of data yields per bin using
+a bivariate Poisson model.
+
+```bash
+mkdir correlation_matrices
+
+makeCorr.py dataframes/dataframe_slt.h5 -o correlation_matrices/corr_slt.h5
+makeCorr.py dataframes/dataframe_ltt.h5 -o correlation_matrices/corr_ltt.h5
+```
+
+TODO: make plots
+
+
+## Step 5: 
