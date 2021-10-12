@@ -38,7 +38,6 @@ Produce histograms of the Asimov dataset providing:
 1. The background expectation
 2. The effective number of MC events (tau) for the Barlow-Beeston method
 
-TODO: Should also provide the scaling factor
 
 ```bash
 mkdir asimov
@@ -108,6 +107,9 @@ TODO: make plots
 
 ## Step 5: Generate Poisson RVS
 
+This generates correlated Poisson random variables for the observables
+in the hadhad / lephad SLT / lephad LTT channels:
+
 ```bash
 mkdir poisson_rvs
 
@@ -120,6 +122,9 @@ generateFromCorr.py correlation_matrices/corr_ltt.h5 asimov/asimov_merged.root \
 generateFromCorr.py correlation_matrices/corr_hadhad.h5 asimov/asimov_merged.root \
     -c Hadhad -o poisson_rvs/rvs_hadhad.h5
 ```
+
+The pseudo-data for the Z-CR is generated from the workspaces in a
+later step (Step 8).
 
 
 ## Step 6: Generate Global Observables (Barlow-Beeston)
@@ -156,10 +161,25 @@ makeAlphaGlobsToys.py \
  -o other_globs/alphas.root
 ```
 
-## Step 8: Build Workspace Inputs
+
+## Step 8: Generate Z-CR Toys
+
+The Z-CR toys can be directly generated from the workspaces / Asimov dataset:
+
+```bash
+mkdir toys_zcr
+
+makeToysZCR.py asimov/asimov_merged.root -o toys_zcr
+```
+
+Will produce the pseudo-dataset to be used in the fit (replacing data)
+as well as the global observables related to the gamma NPs.
 
 
-## Step 9: Fit Toys & Evaluation
+## Step 9: Build Workspace Inputs
+
+
+## Step 10: Fit Toys & Evaluation
 
 This is handled in a separate
 [repository](https://gitlab.cern.ch/cdeutsch/bbtt_global_significance/).
