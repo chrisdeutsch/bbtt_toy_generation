@@ -125,6 +125,20 @@ generateFromCorr.py correlation_matrices/corr_hadhad.h5 asimov/asimov_merged.roo
 ## Step 6: Generate Global Observables (Barlow-Beeston)
 
 
+```bash
+mkdir gamma_globs
+
+makeGammaGlobsToys.py dataframes/dataframe_slt.h5 asimov/asimov_merged.root \
+    -o gamma_globs -c SLT
+
+makeGammaGlobsToys.py dataframes/dataframe_ltt.h5 asimov/asimov_merged.root \
+    -o gamma_globs -c LTT
+
+makeGammaGlobsToys.py dataframes/dataframe_hadhad.h5 asimov/asimov_merged.root \
+    -o gamma_globs -c Hadhad
+```
+
+
 ## Step 7: Generate Global Observables (Others)
 
 
