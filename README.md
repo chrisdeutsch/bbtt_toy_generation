@@ -124,6 +124,9 @@ generateFromCorr.py correlation_matrices/corr_hadhad.h5 asimov/asimov_merged.roo
 
 ## Step 6: Generate Global Observables (Barlow-Beeston)
 
+This will create multiple root-files containing trees with the values
+of the global observables.
+
 
 ```bash
 mkdir gamma_globs
@@ -141,6 +144,17 @@ makeGammaGlobsToys.py dataframes/dataframe_hadhad.h5 asimov/asimov_merged.root \
 
 ## Step 7: Generate Global Observables (Others)
 
+All other (Gaussian-constrained) global observables are treated as
+fully correlated. The script takes *all* workspaces so that it can
+figure what the names of all NPs are.
+
+```bash
+mkdir other_globs
+
+makeAlphaGlobsToys.py \
+ workspaces/{251,260,280,300,325,350,375,400,450,500,550,600,700,800,900,1000,1100,1200,1400,1600}.root \
+ -o other_globs/alphas.root
+```
 
 ## Step 8: Build Workspace Inputs
 
