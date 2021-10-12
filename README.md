@@ -178,6 +178,35 @@ as well as the global observables related to the gamma NPs.
 
 ## Step 9: Build Workspace Inputs
 
+This (mostly technical) step translates the pseudo-data that was
+generated in the final fit binning to the initial histogram binning so
+that it can be used in the workspace building as if it were real data.
+
+**Pseudo-data:**
+
+```bash
+mkdir ws_inputs
+
+cp toys_zcr/pseudodata_ZCR.root ws_inputs/
+
+makePseudoDataHists.py poisson_rvs/rvs_slt.h5 -c SLT -o ws_inputs/
+makePseudoDataHists.py poisson_rvs/rvs_ltt.h5 -c LTT -o ws_inputs/
+makePseudoDataHists.py poisson_rvs/rvs_hadhad.h5 -c Hadhad -o ws_inputs/
+```
+
+**Global observables:**
+
+The global observables are stored as trees where the index of the
+entry corresponds to the toy experiment. We can just merge the ROOT
+files for all global observables:
+
+```bash
+# TODO
+for mass in ...; do
+    hadd ...
+done
+```
+
 
 ## Step 10: Fit Toys & Evaluation
 

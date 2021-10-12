@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 import pickle
 import uproot
@@ -5,6 +6,11 @@ import uproot
 from utils import masspoints
 
 
+# Bin edges before rebinning (i.e. original histograms)
+edgesHadhadPreRebin = np.linspace(0, 1, 1001, dtype=np.float64)
+
+
+# Bin edges after rebinning
 with open("edges_hadhad.pkl", "rb") as f:
     edgesHadhad = pickle.load(f)
 

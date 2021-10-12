@@ -6,6 +6,14 @@ import uproot
 from utils import masspoints
 
 
+# Bin edges before rebinning (i.e. original histograms)
+edgesLephadPreRebin = np.concatenate([
+    np.arange(991, dtype=np.float64) / 1000.,
+    0.99 + np.arange(1, 101, dtype=np.float64) / 10000.
+])
+
+
+# Bin edges after rebinning
 with open("edges_slt.pkl", "rb") as f:
     edgesSLT = pickle.load(f)
 
