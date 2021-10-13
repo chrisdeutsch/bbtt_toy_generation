@@ -97,7 +97,7 @@ for mass in masspoints:
 # Calculate random global observables
 # This is relatively slow but should be good enough for now
 globs = {}
-for i in tqdm(range(1000)):
+for i in tqdm(range(10000)):
     pois_weight = stats.poisson.rvs(mu=1, size=len(df), random_state=rng)
     df["toy_weight"] = pois_weight * df["weight"]
 

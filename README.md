@@ -14,8 +14,65 @@
 
 
 Before starting your directory tree should look something like this:
+
 ```
-TODO
+.
+├── ntuples
+│   ├── hadhad
+│   │   └── mva_ntup.root
+│   └── lephad
+│       ├── LTT_Ntuple_DataFakes.root
+│       ├── LTT_Ntuple_NoDataFakes.root
+│       ├── SLT_Ntuple_DataFakes.root
+│       └── SLT_Ntuple_NoDataFakes.root
+└── workspaces
+    ├── 0_ggF.root
+    ├── 0_ggFVBF.root
+    ├── 1000.root
+    ├── 1100.root
+    ├── 1200.root
+    ├── 1400.root
+    ├── 1600.root
+    ├── 251.root
+    ├── 260.root
+    ├── 280.root
+    ├── 300.root
+    ├── 325.root
+    ├── 350.root
+    ├── 375.root
+    ├── 400.root
+    ├── 450.root
+    ├── 500.root
+    ├── 550.root
+    ├── 600.root
+    ├── 700.root
+    ├── 800.root
+    ├── 900.root
+    └── logs
+        ├── build_workspace_2HDM_1000.txt
+        ├── build_workspace_2HDM_1100.txt
+        ├── build_workspace_2HDM_1200.txt
+        ├── build_workspace_2HDM_1400.txt
+        ├── build_workspace_2HDM_1600.txt
+        ├── build_workspace_2HDM_251.txt
+        ├── build_workspace_2HDM_260.txt
+        ├── build_workspace_2HDM_280.txt
+        ├── build_workspace_2HDM_300.txt
+        ├── build_workspace_2HDM_325.txt
+        ├── build_workspace_2HDM_350.txt
+        ├── build_workspace_2HDM_375.txt
+        ├── build_workspace_2HDM_400.txt
+        ├── build_workspace_2HDM_450.txt
+        ├── build_workspace_2HDM_500.txt
+        ├── build_workspace_2HDM_550.txt
+        ├── build_workspace_2HDM_600.txt
+        ├── build_workspace_2HDM_700.txt
+        ├── build_workspace_2HDM_800.txt
+        ├── build_workspace_2HDM_900.txt
+        ├── build_workspace_SM_0.txt
+        └── build_workspace_SMggFVBF_0.txt
+
+5 directories, 49 files
 ```
 
 ## Step 1: Discriminant Binning
@@ -201,9 +258,13 @@ entry corresponds to the toy experiment. We can just merge the ROOT
 files for all global observables:
 
 ```bash
-# TODO
-for mass in ...; do
-    hadd ...
+for mass in 251 260 280 300 325 350 375 400 \
+            450 500 550 600 700 800 900 1000 \
+            1100 1200 1400 1600; do
+    hadd ws_inputs/toy_globs_${mass}.root \
+        gamma_globs/toy_globs_{slt,ltt,hadhad}_${mass}.root \
+        toys_zcr/toy_globs_ZCR.root \
+        other_globs/alphas.root
 done
 ```
 
