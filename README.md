@@ -132,7 +132,7 @@ mkdir dataframes
 makeLephadDataframes.py \
     ntuples/lephad/SLT_Ntuple_{NoDataFakes,DataFakes}.root \
     -c SLT -o dataframes/dataframe_slt.h5
-    
+
 makeLephadDataframes.py \
     ntuples/lephad/LTT_Ntuple_{NoDataFakes,DataFakes}.root \
     -c LTT -o dataframes/dataframe_ltt.h5
@@ -273,3 +273,64 @@ done
 
 This is handled in a separate
 [repository](https://gitlab.cern.ch/cdeutsch/bbtt_global_significance/).
+
+
+
+# Plots
+
+## Correlation Matrices
+
+The following produces the correlation matrix plots in the INT note:
+```bash
+# hadhad plots
+
+plotCorrelationMatrix.py \
+    correlation_matrices/corr_hadhad.h5 \
+    -o plots/corr_hadhad_low.pdf \
+    -m 300 325
+
+plotCorrelationMatrix.py \
+    correlation_matrices/corr_hadhad.h5 \
+    -o plots/corr_hadhad_medium.pdf \
+    -m 500 600 700
+
+plotCorrelationMatrix.py \
+    correlation_matrices/corr_hadhad.h5 \
+    -o plots/corr_hadhad_high.pdf \
+    -m 1000 1100 1200 1400 1600
+
+
+# lephad SLT plots
+
+plotCorrelationMatrix.py \
+    correlation_matrices/corr_slt.h5 \
+    -o plots/corr_slt_low.pdf \
+    -m 300 325
+
+plotCorrelationMatrix.py \
+    correlation_matrices/corr_slt.h5 \
+    -o plots/corr_slt_medium.pdf \
+    -m 500 600 700
+
+plotCorrelationMatrix.py \
+    correlation_matrices/corr_slt.h5 \
+    -o plots/corr_slt_high.pdf \
+    -m 1000 1100 1200 1400 1600
+
+# lephad LTT plots
+
+plotCorrelationMatrix.py \
+    correlation_matrices/corr_ltt.h5 \
+    -o plots/corr_ltt_low.pdf \
+    -m 300 325
+
+plotCorrelationMatrix.py \
+    correlation_matrices/corr_ltt.h5 \
+    -o plots/corr_ltt_medium.pdf \
+    -m 500 600 700
+
+plotCorrelationMatrix.py \
+    correlation_matrices/corr_ltt.h5 \
+    -o plots/corr_ltt_high.pdf \
+    -m 1000 1100 1200 1400 1600
+```
