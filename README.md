@@ -334,3 +334,22 @@ plotCorrelationMatrix.py \
     -o plots/corr_ltt_high.pdf \
     -m 1000 1100 1200 1400 1600
 ```
+
+## 2D Histograms of Yields
+
+```bash
+plotYield2D.py poisson_rvs/rvs_hadhad.h5 \
+    --bin1 1000 3 \
+    --bin2 1100 3 \
+    -o plots/yield2d_hadhad.pdf
+
+plotYield2D.py poisson_rvs/rvs_slt.h5 \
+    --bin1 1000 4 \
+    --bin2 1100 4 \
+    -o plots/yield2d_slt.pdf
+
+plotYield2D.py poisson_rvs/rvs_ltt.h5 \
+    --bin1 1000 3 \
+    --bin2 1100 2 \
+    -o plots/yield2d_ltt.pdf
+```
