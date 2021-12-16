@@ -63,7 +63,7 @@ pois_tau = stats.poisson(mu=tau)
 fn_out = os.path.join(args.outdir, "pseudodata_ZCR.root")
 fout = R.TFile.Open(fn_out, "RECREATE")
 
-for i in tqdm(range(10000)):
+for i in tqdm(range(20000)):
     pd = pois_exp.rvs(random_state=rng)
 
     h_pd = obs_zcr.Clone()
@@ -93,7 +93,7 @@ tree_globs = np.zeros(len(tau) - 2, dtype=np.float32)
 tree.Branch("index", tree_index, "index/I")
 tree.Branch("globs", tree_globs, f"globs[{len(tau) - 2}]/F")
 
-for i in tqdm(range(10000)):
+for i in tqdm(range(20000)):
     globs = pois_tau.rvs(random_state=rng)
     tree_index[0] = i
     np.copyto(tree_globs, globs[1:-1])

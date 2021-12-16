@@ -18,7 +18,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("infile")
 parser.add_argument("-o", "--outdir", required=True)
 parser.add_argument("-c", "--channel", choices=["Hadhad", "SLT", "LTT"], required=True)
-parser.add_argument("--nToys", default=10000, type=int)
+parser.add_argument("--nToys", default=20000, type=int)
 args = parser.parse_args()
 
 

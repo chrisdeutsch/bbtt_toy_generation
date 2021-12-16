@@ -71,7 +71,7 @@ for glob in sorted(all_globs):
     branches[glob] = tree.Branch(glob, arrays[glob], f"{glob}/F")
 
 
-for i in tqdm(range(10000)):
+for i in tqdm(range(20000)):
     for glob in sorted(all_globs):
         arrays[glob][0] = trunc_norm.rvs(random_state=rng)
 
