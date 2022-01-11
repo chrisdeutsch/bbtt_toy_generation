@@ -130,11 +130,11 @@ according to the binning used in the final fit.
 mkdir dataframes
 
 makeLephadDataframes.py \
-    ntuples/lephad/SLT_Ntuple_{NoDataFakes,DataFakes}.root \
+    ntuples/lephad/SLT_Ntuple_V2.root \
     -c SLT -o dataframes/dataframe_slt.h5
 
 makeLephadDataframes.py \
-    ntuples/lephad/LTT_Ntuple_{NoDataFakes,DataFakes}.root \
+    ntuples/lephad/LTT_Ntuple_V2.root \
     -c LTT -o dataframes/dataframe_ltt.h5
 ```
 

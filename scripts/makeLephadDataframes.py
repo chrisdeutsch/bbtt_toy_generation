@@ -9,14 +9,12 @@ from lephad_utils import getLephadDf, edgesSLT, edgesLTT
 
 parser = argparse.ArgumentParser()
 parser.add_argument("ntuple")
-parser.add_argument("ntuple_fake")
 parser.add_argument("-o", "--outfile", required=True)
 parser.add_argument("-c", "--channel", choices=["SLT", "LTT"], required=True)
 args = parser.parse_args()
 
 
 treenames = [
-    "data",
     "ttbar",
     "stops", "stopt", "stopWt",
     "W", "Wtt",
@@ -28,11 +26,12 @@ treenames = [
     "ggZHbb", "qqZHbb", "WHbb"
 ]
 
+
 dfs = []
 for tree in treenames:
     dfs.append(getLephadDf(args.ntuple, tree))
 
-dfs.append(getLephadDf(args.ntuple_fake, "Fake"))
+dfs.append(getLephadDf(args.ntuple, "Fake"))
 
 df = pd.concat(dfs)
 del dfs

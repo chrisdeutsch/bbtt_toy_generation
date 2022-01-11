@@ -21,7 +21,8 @@ df["weightSquared"] = df["weight"]**2
 
 # Drop data
 df = df.loc[df["sample"] != "data"]
-df["sample"] = df["sample"].cat.remove_categories(["data"])
+if "data" in df["sample"].cat.categories:
+    df["sample"] = df["sample"].cat.remove_categories(["data"])
 
 # Apply scale factors
 zhf_scale = 1.35
