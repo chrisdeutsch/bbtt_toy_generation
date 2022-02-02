@@ -37,7 +37,8 @@ df["weight"] = df["weight"].astype(np.float64)
 df["weightSquared"] = df["weight"]**2
 
 df = df.loc[df["sample"] != "data"]
-df["sample"] = df["sample"].cat.remove_categories(["data"])
+if "data" in df["sample"].cat.categories:
+    df["sample"] = df["sample"].cat.remove_categories(["data"])
 
 # No scaling of Z+HF and ttbar intentional to be consistent with
 # treatment in workspaces

@@ -21,13 +21,9 @@ Before starting your directory tree should look something like this:
 │   ├── hadhad
 │   │   └── mva_ntup.root
 │   └── lephad
-│       ├── LTT_Ntuple_DataFakes.root
-│       ├── LTT_Ntuple_NoDataFakes.root
-│       ├── SLT_Ntuple_DataFakes.root
-│       └── SLT_Ntuple_NoDataFakes.root
+│       ├── LTT_Ntuple_V2.root
+│       └── SLT_Ntuple_V2.root
 └── workspaces
-    ├── 0_ggF.root
-    ├── 0_ggFVBF.root
     ├── 1000.root
     ├── 1100.root
     ├── 1200.root
@@ -68,11 +64,7 @@ Before starting your directory tree should look something like this:
         ├── build_workspace_2HDM_600.txt
         ├── build_workspace_2HDM_700.txt
         ├── build_workspace_2HDM_800.txt
-        ├── build_workspace_2HDM_900.txt
-        ├── build_workspace_SM_0.txt
-        └── build_workspace_SMggFVBF_0.txt
-
-5 directories, 49 files
+        └── build_workspace_2HDM_900.txt
 ```
 
 ## Step 1: Discriminant Binning
